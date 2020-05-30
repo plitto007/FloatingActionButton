@@ -1,14 +1,15 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -24,7 +25,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    def appcompat_version = '1.1.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
 }
 
 apply from: '../gradle-mvn-push.gradle'
